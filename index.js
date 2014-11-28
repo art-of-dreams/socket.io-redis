@@ -162,6 +162,16 @@ function adapter(uri, opts){
       multi.exec(fn);
     });
   };
+
+  /**
+   * Check that user connected to socket.io
+   *
+   * @param {String} socket.io id
+   * @api public
+   */
+  Redis.prototype.isConnected = function(socketId, fn){
+    data.exists(prefix + '#' + socketId, fn);
+  };
   
   /**
    * Get all clients in room.
