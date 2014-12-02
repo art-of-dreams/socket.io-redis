@@ -171,8 +171,8 @@ function adapter(uri, opts){
    */
   Redis.prototype.isConnected = function(player1, player2, fn){
     data.multi()
-        .exists(prefix + '#' + player1, fn)
-        .exists(prefix + '#' + player2, fn)
+        .exists(prefix + '#' + player1)
+        .exists(prefix + '#' + player2)
         .exec(function (err, connected) {
           if (err) return console.error(err);
           console.log(connected);
