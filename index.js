@@ -164,13 +164,19 @@ function adapter(uri, opts){
   };
 
   /**
-   * Check that user connected to socket.io
+   * Check that 2 users connected to socket.io
    *
-   * @param {String} socket.io id
+   * @param {String} socket.io ids
    * @api public
    */
-  Redis.prototype.isConnected = function(socketId, fn){
-    data.exists(prefix + '#' + socketId, fn);
+  Redis.prototype.isConnected = function(player1, player2, fn){
+    data.multi()
+        .exists(prefix + '#' + player1, fn)
+        .exists(prefix + '#' + player2, fn)
+        .exec(function (err, connected) {
+          if (err) return console.error(err);
+          console.log(connected);
+        });
   };
   
   /**
