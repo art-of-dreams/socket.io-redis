@@ -173,10 +173,7 @@ function adapter(uri, opts){
     data.multi()
         .exists(prefix + '#' + player1)
         .exists(prefix + '#' + player2)
-        .exec(function (err, connected) {
-          if (err) return console.error(err);
-          console.log(connected);
-        });
+        .exec(fn);
   };
   
   /**
