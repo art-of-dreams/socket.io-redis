@@ -29,7 +29,7 @@ describe('socket.io-redis', function(){
 
       async.times(2, function(n, next){
         var pub = redis.createClient();
-        var sub = redis.createClient(null, null, {detect_buffers: true});
+        var sub = redis.createClient(null, null, {return_buffers: true});
         var srv = http();
         var sio = io(srv, {adapter: redisAdapter({pubClient: pub, subClient: sub})});
         self.sio = sio;
@@ -136,7 +136,7 @@ describe('socket.io-redis', function(){
 
       async.times(2, function(n, next){
         var pub = redis.createClient();
-        var sub = redis.createClient(null, null, {detect_buffers: true});
+        var sub = redis.createClient(null, null, {return_buffers: true});
         var srv = http();
         var sio = io(srv, {adapter: redisAdapter({pubClient: pub, subClient: sub})});
         self.sio = sio;

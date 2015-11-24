@@ -51,8 +51,8 @@ function adapter(uri, opts){
   // init clients if needed
   if (!pub) pub = socket ? redis(socket) : redis(port, host);
   if (!sub) sub = socket
-    ? redis(socket, { detect_buffers: true })
-    : redis(port, host, {detect_buffers: true});
+    ? redis(socket, { return_buffers: true })
+    : redis(port, host, {return_buffers: true});
   if (!data) data = socket ? redis(socket) : redis(port, host);
 
 
